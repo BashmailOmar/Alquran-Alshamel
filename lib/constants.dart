@@ -18,3 +18,9 @@ const kSplashSubText = TextStyle(
   fontSize: 20,
   fontWeight: FontWeight.bold,
 );
+
+const kCardText = TextStyle(
+    color: Color(primaryBrown),
+    fontSize: 13,
+    fontFamily: 'Vazirmatn',
+    fontWeight: FontWeight.bold);
