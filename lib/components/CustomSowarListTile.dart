@@ -1,10 +1,10 @@
 import 'package:alquran_alshamel/constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomSowarListTile extends StatefulWidget {
   final IconData cardIcon;
   final String cardText;
+
   // final Function onClick;
   CustomSowarListTile({
     required this.cardText,
