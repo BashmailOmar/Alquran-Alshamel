@@ -1,48 +1,81 @@
-import 'package:alquran_alshamel/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:alquran_alshamel/constants.dart';
 
-class CustomCard extends StatelessWidget {
+class CustomButton extends StatelessWidget {
   final IconData cardIcon;
   final String cardText;
-  final double cardHeight;
-  final double cardWidth;
-  // final Function onClick;
-  CustomCard({
+  final double topLeft;
+  final double topRight;
+  final double bottomLeft;
+  final double bottomRight;
+  final navigatTo;
+
+  CustomButton({
     required this.cardText,
     required this.cardIcon,
-    required this.cardHeight,
-    required this.cardWidth,
-    /*required this.onClick*/
+    required this.topLeft,
+    required this.topRight,
+    required this.bottomLeft,
+    required this.bottomRight,
+    required this.navigatTo,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(15),
-      child: Card(
-        elevation: 15,
-        color: Color(primaryGold),
-        child: Container(
-          margin:
-              EdgeInsets.symmetric(horizontal: cardWidth, vertical: cardHeight),
-          child: Column(
+    return Container(
+      width: 350,
+      height: 60,
+      decoration: CardDecoration(),
+      child: TextButton(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Icon(
                 cardIcon,
-                size: 50,
-                color: Color(primaryBrown),
+                color: const Color(primaryBrown),
+                size: 40,
               ),
-              SizedBox(
-                height: 7.5,
+              const SizedBox(
+                width: 5,
               ),
               Text(
                 cardText,
                 style: kCardText,
+                textAlign: TextAlign.end,
               ),
             ],
           ),
         ),
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => navigatTo,
+            ),
+          );
+        },
       ),
+    );
+  }
+
+  BoxDecoration CardDecoration() {
+    return BoxDecoration(
+      color: const Color(primaryGold),
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(topLeft),
+        topRight: Radius.circular(topRight),
+        bottomLeft: Radius.circular(bottomLeft),
+        bottomRight: Radius.circular(bottomRight),
+      ),
+      boxShadow: [
+        BoxShadow(
+          color: const Color(primaryBrown).withOpacity(0.75),
+          spreadRadius: 1,
+          blurRadius: 3,
+          offset: const Offset(5, 5),
+        )
+      ],
     );
   }
 }

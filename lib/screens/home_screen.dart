@@ -1,6 +1,10 @@
+import 'package:alquran_alshamel/components/CustomListTile.dart';
 import 'package:alquran_alshamel/components/custom_card.dart';
 import 'package:alquran_alshamel/constants.dart';
+import 'package:alquran_alshamel/screens/quran_screen.dart';
+import 'package:alquran_alshamel/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'home_screen';
@@ -10,58 +14,64 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  static const double dividerHeight = 45.0;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(primaryBrown),
-        title: const Center(
-          child: Text(
-            'الصفحة الرئيسية',
-            style: TextStyle(
-              color: Color(primaryGold),
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Vazirmatn',
-            ),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: const Color(primaryBrown),
+          title: const Center(
+            child: Text('الصفحة الرئيسية', style: kPageTitleText),
           ),
         ),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CustomCard(
-                    cardText: 'أوقات الصلاة',
-                    cardIcon: Icons.access_time,
-                    cardHeight: 20,
-                    cardWidth: 30),
-                CustomCard(
-                    cardText: 'القرآن الكريم',
-                    cardIcon: Icons.menu_book_sharp,
-                    cardHeight: 20,
-                    cardWidth: 30),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CustomCard(
-                    cardText: 'القبلة',
-                    cardIcon: Icons.gps_fixed,
-                    cardHeight: 20,
-                    cardWidth: 35),
-                CustomCard(
-                    cardText: 'الأذكار',
-                    cardIcon: Icons.pan_tool_alt_sharp,
-                    cardHeight: 20,
-                    cardWidth: 35),
-              ],
-            ),
-          ],
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CustomButton(
+                  cardIcon: FontAwesomeIcons.bookQuran,
+                  cardText: "القرآن الكريم",
+                  topLeft: 25,
+                  topRight: 25,
+                  bottomLeft: 10,
+                  bottomRight: 10,
+                  navigatTo: QuranScreen()),
+              const SizedBox(
+                height: dividerHeight,
+              ),
+              CustomButton(
+                  cardIcon: FontAwesomeIcons.mosque,
+                  cardText: "أوقات الصلاة",
+                  topLeft: 10,
+                  topRight: 10,
+                  bottomLeft: 10,
+                  bottomRight: 10,
+                  navigatTo: QuranScreen()),
+              const Divider(
+                height: dividerHeight,
+              ),
+              CustomButton(
+                  cardIcon: FontAwesomeIcons.prayingHands,
+                  cardText: "الأذكار",
+                  topLeft: 10,
+                  topRight: 10,
+                  bottomLeft: 10,
+                  bottomRight: 10,
+                  navigatTo: QuranScreen()),
+              const Divider(
+                height: dividerHeight,
+              ),
+              CustomButton(
+                  cardIcon: FontAwesomeIcons.kaaba,
+                  cardText: "إتجاه القبلة",
+                  topLeft: 10,
+                  topRight: 10,
+                  bottomLeft: 25,
+                  bottomRight: 25,
+                  navigatTo: QuranScreen()),
+            ],
+          ),
         ),
       ),
     );
