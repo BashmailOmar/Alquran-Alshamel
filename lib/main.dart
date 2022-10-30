@@ -5,7 +5,15 @@ import 'package:alquran_alshamel/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(AlquranAlshamel());
+  runApp(
+    MaterialApp(
+      home: Directionality(
+        // add this
+        textDirection: TextDirection.rtl, // set this property
+        child: AlquranAlshamel(),
+      ),
+    ),
+  );
 }
 
 class AlquranAlshamel extends StatelessWidget {
