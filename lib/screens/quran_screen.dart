@@ -1,5 +1,5 @@
-import 'package:alquran_alshamel/components/CustomListTile.dart';
-import 'package:alquran_alshamel/components/CustomSowarListTile.dart';
+import 'package:alquran_alshamel/components/custom_list_tile.dart';
+import 'package:alquran_alshamel/components/custom_sowar_list_tile.dart';
 import 'package:alquran_alshamel/constants.dart';
 import 'package:alquran_alshamel/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
