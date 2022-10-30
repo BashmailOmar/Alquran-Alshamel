@@ -11,15 +11,24 @@ class PrayTime extends StatefulWidget {
 
 class _PrayTimeState extends State<PrayTime> {
   late final String prayName = "الفجر";
+  String fajr = "الفجر";
+  String sunrise = "الشروق";
+  String dhohr = "الظهر";
+  String asr = "العصر";
+  String maghreb = "المغرب";
+  String isha = "العشاء";
+
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.grey,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("أوقات الصلاة ($prayName) :"),
+              Text("وقت $prayName بعد  :"),
               SizedBox(
                 width: 15,
               ),
@@ -29,6 +38,54 @@ class _PrayTimeState extends State<PrayTime> {
               )
             ],
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Column(
+                children: [
+                  Text(fajr),
+                  Text("data"),
+                ],
+              ),
+              Column(
+                children: [
+                  Text(sunrise),
+                  Text("data"),
+                ],
+              ),
+              Column(
+                children: [
+                  Text(dhohr),
+                  Text("data"),
+                ],
+              ),
+              Column(
+                children: [
+                  Text(asr),
+                  Text("data"),
+                ],
+              ),
+              Column(
+                children: [
+                  Text(maghreb),
+                  Text("data"),
+                ],
+              ),
+              Column(
+                children: [
+                  Text(isha),
+                  Text("data"),
+                ],
+              ),
+            ],
+          ),
+          TextButton(
+            onPressed: () {},
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [Text("تغيير المدينة"), Icon(Icons.arrow_right)],
+            ),
+          )
         ],
       ),
     );
