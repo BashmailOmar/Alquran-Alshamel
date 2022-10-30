@@ -48,17 +48,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: dividerHeight,
                   ),
                   CustomButton(
-                      cardIcon: FontAwesomeIcons.mosque,
-                      cardText: "أوقات الصلاة",
-                      topLeft: 10,
-                      topRight: 10,
-                      bottomLeft: 10,
-                      bottomRight: 10,
-                      navigatTo: QuranScreen()),
-                  const Divider(
-                    height: dividerHeight,
-                  ),
-                  CustomButton(
                       cardIcon: FontAwesomeIcons.prayingHands,
                       cardText: "الأذكار",
                       topLeft: 10,
