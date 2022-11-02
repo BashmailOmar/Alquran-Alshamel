@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:alquran_alshamel/constants.dart';
 import 'package:alquran_alshamel/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:localization/localization.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String id = 'splash_screen';
@@ -31,8 +32,8 @@ class _SplashScreenState extends State<SplashScreen> {
                 height: 70,
               ),
               Image.asset('images/logo.png'),
-              const Text(
-                'القرآن الشامل',
+              Text(
+                'quran_shamel'.i18n(),
                 textAlign: TextAlign.center,
                 style: kSplashMainText,
               ),
@@ -46,8 +47,8 @@ class _SplashScreenState extends State<SplashScreen> {
               const Divider(
                 height: 90,
               ),
-              const Text(
-                'Created by\nX7H Team',
+              Text(
+                'created_by'.i18n(),
                 style: kSplashSubText,
               ),
               const Divider(

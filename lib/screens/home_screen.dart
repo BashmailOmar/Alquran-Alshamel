@@ -4,6 +4,7 @@ import 'package:alquran_alshamel/screens/quran_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:alquran_alshamel/components/pray_time.dart';
+import 'package:localization/localization.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'home_screen';
@@ -22,8 +23,8 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: const Color(primaryBrown),
-          title: const Center(
-            child: Text('الصفحة الرئيسية', style: kPageTitleText),
+          title: Center(
+            child: Text('home'.i18n(), style: kPageTitleText),
           ),
         ),
         body: Column(
@@ -38,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   CustomButton(
                       cardIcon: FontAwesomeIcons.bookQuran,
-                      cardText: "القرآن الكريم",
+                      cardText: 'quran'.i18n(),
                       topLeft: 25,
                       topRight: 25,
                       bottomLeft: 10,
@@ -49,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   CustomButton(
                       cardIcon: FontAwesomeIcons.prayingHands,
-                      cardText: "الأذكار",
+                      cardText: 'athkar'.i18n(),
                       topLeft: 10,
                       topRight: 10,
                       bottomLeft: 10,
@@ -60,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   CustomButton(
                       cardIcon: FontAwesomeIcons.kaaba,
-                      cardText: "إتجاه القبلة",
+                      cardText: 'qiblah_location'.i18n(),
                       topLeft: 10,
                       topRight: 10,
                       bottomLeft: 25,

@@ -32,18 +32,18 @@ class CustomButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Icon(
-                cardIcon,
-                color: const Color(primaryBrown),
-                size: 40,
-              ),
-              const SizedBox(
-                width: 5,
-              ),
               Text(
                 cardText,
                 style: kCardText,
                 textAlign: TextAlign.end,
+              ),
+              const SizedBox(
+                width: 5,
+              ),
+              Icon(
+                cardIcon,
+                color: const Color(primaryBrown),
+                size: 40,
               ),
             ],
           ),
