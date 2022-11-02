@@ -1,0 +1,16 @@
+{
+    "quran_shamel": "Al Quran Al Shamel",
+    "home": "Home",
+    "fajr": "Fajr",
+    "sunrise": "Sunrise",
+    "dhohr": "Dhohr",
+    "asr": "Asr",
+    "maghreb": "Maghreb",
+    "isha": "Isha",
+    "change_city": "Change city",
+    "quran": "Al Quran",
+    "athkar": "Al Athkar",
+    "qiblah_location": "Qiblah location",
+    "next_prayer": "Next prayer %s after",
+    "created_by": "Created by love\nin Makkah"
+}

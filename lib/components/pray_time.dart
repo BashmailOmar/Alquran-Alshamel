@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localization/localization.dart';
 
 class PrayTime extends StatefulWidget {
   const PrayTime({
@@ -10,14 +11,6 @@ class PrayTime extends StatefulWidget {
 }
 
 class _PrayTimeState extends State<PrayTime> {
-  late final String prayName = "الفجر";
-  String fajr = "الفجر";
-  String sunrise = "الشروق";
-  String dhohr = "الظهر";
-  String asr = "العصر";
-  String maghreb = "المغرب";
-  String isha = "العشاء";
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,12 +21,12 @@ class _PrayTimeState extends State<PrayTime> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("وقت $prayName بعد  :"),
+              Text('next_prayer'.i18n(['fajr'.i18n()])),
               SizedBox(
                 width: 15,
               ),
               Text(
-                "data",
+                '3:21',
                 style: TextStyle(color: Colors.amber),
               )
             ],
@@ -43,38 +36,38 @@ class _PrayTimeState extends State<PrayTime> {
             children: [
               Column(
                 children: [
-                  Text(fajr),
-                  Text("data"),
+                  Text('fajr'.i18n()),
+                  Text("4:37"),
                 ],
               ),
               Column(
                 children: [
-                  Text(sunrise),
-                  Text("data"),
+                  Text('sunrise'.i18n()),
+                  Text("4:37"),
                 ],
               ),
               Column(
                 children: [
-                  Text(dhohr),
-                  Text("data"),
+                  Text('dhohr'.i18n()),
+                  Text("11:48"),
                 ],
               ),
               Column(
                 children: [
-                  Text(asr),
-                  Text("data"),
+                  Text('asr'.i18n()),
+                  Text("2:57"),
                 ],
               ),
               Column(
                 children: [
-                  Text(maghreb),
-                  Text("data"),
+                  Text('maghreb'.i18n()),
+                  Text("5:15"),
                 ],
               ),
               Column(
                 children: [
-                  Text(isha),
-                  Text("data"),
+                  Text('isha'.i18n()),
+                  Text("6:37"),
                 ],
               ),
             ],
@@ -83,7 +76,7 @@ class _PrayTimeState extends State<PrayTime> {
             onPressed: () {},
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Text("تغيير المدينة"), Icon(Icons.arrow_right)],
+              children: [Text('change_city'.i18n()), Icon(Icons.arrow_right)],
             ),
           )
         ],
