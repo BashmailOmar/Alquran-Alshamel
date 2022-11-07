@@ -1,5 +1,9 @@
+import 'package:alquran_alshamel/models/pray.dart';
+import 'package:alquran_alshamel/services/pray_api.dart';
 import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class PrayTime extends StatefulWidget {
   const PrayTime({
@@ -11,6 +15,14 @@ class PrayTime extends StatefulWidget {
 }
 
 class _PrayTimeState extends State<PrayTime> {
+  bool isLoaded = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +33,7 @@ class _PrayTimeState extends State<PrayTime> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('next_prayer'.i18n(['fajr'.i18n()])),
+              Text('next_prayer'.i18n(['fajr'.i18n(), 'Makkah'])),
               SizedBox(
                 width: 15,
               ),

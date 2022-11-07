@@ -11,6 +11,6 @@
     "quran": "Al Quran",
     "athkar": "Al Athkar",
     "qiblah_location": "Qiblah location",
-    "next_prayer": "Next prayer %s after",
+    "next_prayer": "%s prayer in %s after:",
     "created_by": "Created by love\nin Makkah"
 }

@@ -11,6 +11,6 @@
     "quran": "القرآن الكريم",
     "athkar": "الأذكار",
     "qiblah_location": "إتجاه القبلة",
-    "next_prayer": "الصلاة التالية %s بعد",
+    "next_prayer":"صلاة %s في %s بعد:",
     "created_by": "صنع بحب\nفي مكة"
 }
