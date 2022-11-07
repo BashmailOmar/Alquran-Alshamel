@@ -17,6 +17,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   static const double dividerHeight = 45.0;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
