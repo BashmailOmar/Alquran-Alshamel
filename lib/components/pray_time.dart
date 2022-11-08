@@ -1,5 +1,4 @@
-import 'package:alquran_alshamel/models/pray.dart';
-import 'package:alquran_alshamel/services/pray_api.dart';
+import 'package:alquran_alshamel/services/prayer.dart';
 import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
 import 'package:http/http.dart' as http;
