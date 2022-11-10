@@ -3,7 +3,7 @@ import 'package:alquran_alshamel/constants.dart';
 import 'package:alquran_alshamel/screens/quran_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:alquran_alshamel/components/pray_time.dart';
+import 'package:alquran_alshamel/components/prayers_time.dart';
 import 'package:localization/localization.dart';
 
 class HomeScreen extends StatefulWidget {
