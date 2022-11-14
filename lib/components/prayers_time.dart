@@ -1,25 +1,52 @@
-import 'package:alquran_alshamel/services/prayer.dart';
+import 'package:alquran_alshamel/modules/prayers.dart';
+import 'package:alquran_alshamel/services/prayers_data.dart';
 import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class PrayTime extends StatefulWidget {
-  const PrayTime({
-    Key? key,
-  }) : super(key: key);
+  PrayTime({this.prayersDataDes});
+  final prayersDataDes;
 
   @override
   State<PrayTime> createState() => _PrayTimeState();
 }
 
 class _PrayTimeState extends State<PrayTime> {
-  bool isLoaded = false;
+  var nextPrayerName = "Asr";
+  var cityName = "Makkah";
+  var nextPraerTime = "00:00";
+  var fajrPrayer = "00:00";
+  var sunriseTime = "00:00";
+  var dhohrPrayer = "00:00";
+  var asrPrayer = "00:00";
+  var maghrebPrayer = "00:00";
+  var ishaPrayer = "00:00";
+  var isLoaded = false;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+    updatePrayersTime(widget.prayersDataDes);
+    // updatePrayersTime(PrayersData.getDefPrayers());
+  }
+
+  void updatePrayersTime(dynamic prayerData) {
+    setState(() {
+      if (prayerData == null) {
+        return;
+      } //here we should use shared prefrences to load last prayrs' time like this => sharednextPrayerName = nextPrayerName = ['data][timing]
+
+      fajrPrayer = prayerData['data']['timings']['Fajr'];
+      sunriseTime = prayerData['data']['timings']['Sunrise'];
+      dhohrPrayer = prayerData['data']['timings']['Dhuhr'];
+      asrPrayer = prayerData['data']['timings']['Asr'];
+      maghrebPrayer = prayerData['data']['timings']['Maghrib'];
+      ishaPrayer = prayerData['data']['timings']['Isha'];
+      nextPrayerName = "Asr";
+      cityName = prayerData['data']['meta']['Isha'];
+      nextPraerTime = "00:00";
+      isLoaded = true;
+    });
   }
 
   @override
@@ -32,7 +59,8 @@ class _PrayTimeState extends State<PrayTime> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('next_prayer'.i18n(['fajr'.i18n(), 'Makkah'])),
+              Text('next_prayer'
+                  .i18n([nextPrayerName.toString().i18n(), 'Makkah'])),
               SizedBox(
                 width: 15,
               ),
@@ -48,37 +76,37 @@ class _PrayTimeState extends State<PrayTime> {
               Column(
                 children: [
                   Text('fajr'.i18n()),
-                  Text("4:37"),
+                  Text(fajrPrayer),
                 ],
               ),
               Column(
                 children: [
                   Text('sunrise'.i18n()),
-                  Text("4:37"),
+                  Text(sunriseTime),
                 ],
               ),
               Column(
                 children: [
                   Text('dhohr'.i18n()),
-                  Text("11:48"),
+                  Text(dhohrPrayer),
                 ],
               ),
               Column(
                 children: [
                   Text('asr'.i18n()),
-                  Text("2:57"),
+                  Text(asrPrayer),
                 ],
               ),
               Column(
                 children: [
                   Text('maghreb'.i18n()),
-                  Text("5:15"),
+                  Text(maghrebPrayer),
                 ],
               ),
               Column(
                 children: [
                   Text('isha'.i18n()),
-                  Text("6:37"),
+                  Text(ishaPrayer),
                 ],
               ),
             ],
