@@ -1,6 +1,7 @@
 import 'package:alquran_alshamel/components/custom_card.dart';
 import 'package:alquran_alshamel/constants.dart';
 import 'package:alquran_alshamel/screens/quran_screen.dart';
+import 'package:alquran_alshamel/services/prayers_data.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:alquran_alshamel/components/prayers_time.dart';
@@ -8,8 +9,8 @@ import 'package:localization/localization.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'home_screen';
-
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({this.prayersDataDes});
+  final prayersDataDes;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -30,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         body: Column(
           children: [
-            const PrayTime(),
+            PrayTime(prayersDataDes: widget.prayersDataDes),
             const SizedBox(
               height: dividerHeight,
             ),

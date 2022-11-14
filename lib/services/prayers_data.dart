@@ -1,4 +1,3 @@
-import 'package:alquran_alshamel/services/location.dart';
 import 'package:alquran_alshamel/services/networking.dart';
 
 class PrayersData {
@@ -7,6 +6,13 @@ class PrayersData {
     NetworkHelper networkHelper = NetworkHelper(
         "http://api.aladhan.com/v1/timingsByCity?city=$cityName&country=%&method=4");
     var prayersData = await networkHelper.getData();
+    return prayersData;
+  }
+
+  Future<dynamic> getDefPrayers() async {
+    NetworkHelper networkHelper = NetworkHelper(
+        "http://api.aladhan.com/v1/timingsByCity?city=Makkah&country=%&method=4");
+    Map prayersData = await networkHelper.getData();
     return prayersData;
   }
 

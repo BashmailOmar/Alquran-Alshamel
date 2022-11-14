@@ -4,59 +4,47 @@ import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
 
 class PrayTime extends StatefulWidget {
-  const PrayTime({
-    Key? key,
-  }) : super(key: key);
+  PrayTime({this.prayersDataDes});
+  final prayersDataDes;
 
   @override
   State<PrayTime> createState() => _PrayTimeState();
 }
 
 class _PrayTimeState extends State<PrayTime> {
-  dynamic prayersData = PrayersData().getCityPrayers;
-  late var nextPrayerName;
-  late var cityName;
-  late var nextPraerTime;
-  late var fajrPrayer;
-  late var sunriseTime;
-  late var dhohrPrayer;
-  late var asrPrayer;
-  late var maghrebPrayer;
-  late var ishaPrayer;
-  late bool isLoaded = false;
+  var nextPrayerName = "Asr";
+  var cityName = "Makkah";
+  var nextPraerTime = "00:00";
+  var fajrPrayer = "00:00";
+  var sunriseTime = "00:00";
+  var dhohrPrayer = "00:00";
+  var asrPrayer = "00:00";
+  var maghrebPrayer = "00:00";
+  var ishaPrayer = "00:00";
+  var isLoaded = false;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    updatePrayersTime(prayersData);
+    updatePrayersTime(widget.prayersDataDes);
+    // updatePrayersTime(PrayersData.getDefPrayers());
   }
 
   void updatePrayersTime(dynamic prayerData) {
     setState(() {
-      if (prayersData == null) {
-        nextPrayerName = "Asr";
-        cityName = "Makkah";
-        nextPraerTime = "00:00";
-        fajrPrayer = "00:00";
-        sunriseTime = "00:00";
-        dhohrPrayer = "00:00";
-        asrPrayer = "00:00";
-        maghrebPrayer = "00:00";
-        ishaPrayer = "00:00";
-        isLoaded = false;
+      if (prayerData == null) {
         return;
       } //here we should use shared prefrences to load last prayrs' time like this => sharednextPrayerName = nextPrayerName = ['data][timing]
 
-      nextPrayerName = Prayers.getNextPrayerName();
-      cityName = "Makkah";
-      nextPraerTime = Prayers.getNextPrayerTime();
-      fajrPrayer = prayersData['data']['timings']['Fajr'];
-      sunriseTime = prayersData['data']['timings']['Fajr'];
-      dhohrPrayer = prayersData['data']['timings']['Fajr'];
-      asrPrayer = prayersData['data']['timings']['Fajr'];
-      maghrebPrayer = prayersData['data']['timings']['Fajr'];
-      ishaPrayer = prayersData['data']['timings']['Fajr'];
+      fajrPrayer = prayerData['data']['timings']['Fajr'];
+      sunriseTime = prayerData['data']['timings']['Sunrise'];
+      dhohrPrayer = prayerData['data']['timings']['Dhuhr'];
+      asrPrayer = prayerData['data']['timings']['Asr'];
+      maghrebPrayer = prayerData['data']['timings']['Maghrib'];
+      ishaPrayer = prayerData['data']['timings']['Isha'];
+      nextPrayerName = "Asr";
+      cityName = prayerData['data']['meta']['Isha'];
+      nextPraerTime = "00:00";
       isLoaded = true;
     });
   }
@@ -71,7 +59,8 @@ class _PrayTimeState extends State<PrayTime> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('next_prayer'.i18n(['fajr'.i18n(), 'Makkah'])),
+              Text('next_prayer'
+                  .i18n([nextPrayerName.toString().i18n(), 'Makkah'])),
               SizedBox(
                 width: 15,
               ),

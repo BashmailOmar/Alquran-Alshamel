@@ -14,6 +14,6 @@ class Prayers {
   }
 
   static getNextPrayerName() {
-    return "FajrDes";
+    return "asr";
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:alquran_alshamel/constants.dart';
 import 'package:alquran_alshamel/screens/home_screen.dart';
+import 'package:alquran_alshamel/services/prayers_data.dart';
 import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
 
@@ -12,12 +13,21 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  @override
   void initState() {
     super.initState();
+    getPrayersData();
+  }
+
+  void getPrayersData() async {
+    var prayersDataHS = await PrayersData().getDefPrayers();
     Timer(
         Duration(milliseconds: 1800),
         () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => HomeScreen())));
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    HomeScreen(prayersDataDes: prayersDataHS))));
   }
 
   @override
