@@ -8,9 +8,10 @@ class CustomButton extends StatelessWidget {
   final double topRight;
   final double bottomLeft;
   final double bottomRight;
-  final navigatTo;
+  final dynamic navigatTo;
 
-  CustomButton({
+  const CustomButton({
+    Key? key,
     required this.cardText,
     required this.cardIcon,
     required this.topLeft,
@@ -18,14 +19,14 @@ class CustomButton extends StatelessWidget {
     required this.bottomLeft,
     required this.bottomRight,
     required this.navigatTo,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 350,
       height: 60,
-      decoration: CardDecoration(),
+      decoration: cardDecoration(),
       child: TextButton(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -59,7 +60,7 @@ class CustomButton extends StatelessWidget {
     );
   }
 
-  BoxDecoration CardDecoration() {
+  BoxDecoration cardDecoration() {
     return BoxDecoration(
       color: const Color(primaryGold),
       borderRadius: BorderRadius.only(

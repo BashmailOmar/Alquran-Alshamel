@@ -5,7 +5,7 @@ import 'package:localization/localization.dart';
 
 class PrayTime extends StatefulWidget {
   PrayTime({this.prayersDataDes});
-  final prayersDataDes;
+  final dynamic prayersDataDes;
 
   @override
   State<PrayTime> createState() => _PrayTimeState();
@@ -61,7 +61,7 @@ class _PrayTimeState extends State<PrayTime> {
             children: [
               Text('next_prayer'
                   .i18n([nextPrayerName.toString().i18n(), 'Makkah'])),
-              SizedBox(
+              const SizedBox(
                 width: 15,
               ),
               Text(
@@ -115,7 +115,10 @@ class _PrayTimeState extends State<PrayTime> {
             onPressed: () {},
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Text('change_city'.i18n()), Icon(Icons.arrow_right)],
+              children: [
+                Text('change_city'.i18n()),
+                const Icon(Icons.arrow_right)
+              ],
             ),
           )
         ],

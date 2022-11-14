@@ -8,10 +8,11 @@ class CustomListTile extends StatefulWidget {
   final double topRight;
   final double bottomLeft;
   final double bottomRight;
-  final navigatTo;
+  final dynamic navigatTo;
 
   // final Function onClick;
-  CustomListTile({
+  const CustomListTile({
+    Key? key,
     required this.cardText,
     required this.cardIcon,
     required this.topLeft,
@@ -20,7 +21,7 @@ class CustomListTile extends StatefulWidget {
     required this.bottomRight,
     required this.navigatTo,
     /*required this.onClick*/
-  });
+  }) : super(key: key);
 
   @override
   State<CustomListTile> createState() => _CustomListTileState();
@@ -40,7 +41,7 @@ class _CustomListTileState extends State<CustomListTile> {
       child: Container(
         width: 350,
         child: ListTile(
-          shape: CustomShape(),
+          shape: customShape(),
           tileColor: const Color(primaryGold),
           iconColor: const Color(primaryBrown),
           leading: Icon(widget.cardIcon, size: 35),
@@ -55,7 +56,7 @@ class _CustomListTileState extends State<CustomListTile> {
     );
   }
 
-  RoundedRectangleBorder CustomShape() {
+  RoundedRectangleBorder customShape() {
     return RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(widget.topLeft),
