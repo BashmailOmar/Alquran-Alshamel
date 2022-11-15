@@ -6,11 +6,12 @@ class CustomSowarListTile extends StatefulWidget {
   final String cardText;
 
   // final Function onClick;
-  CustomSowarListTile({
+  const CustomSowarListTile({
+    Key? key,
     required this.cardText,
     required this.cardIcon,
     /*required this.onClick*/
-  });
+  }) : super(key: key);
 
   @override
   State<CustomSowarListTile> createState() => _CustomListTileState();
