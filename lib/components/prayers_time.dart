@@ -1,10 +1,8 @@
-import 'package:alquran_alshamel/modules/prayers.dart';
-import 'package:alquran_alshamel/services/prayers_data.dart';
 import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
 
 class PrayTime extends StatefulWidget {
-  PrayTime({this.prayersDataDes});
+  const PrayTime({Key? key, this.prayersDataDes}) : super(key: key);
   final dynamic prayersDataDes;
 
   @override
@@ -27,7 +25,6 @@ class _PrayTimeState extends State<PrayTime> {
   void initState() {
     super.initState();
     updatePrayersTime(widget.prayersDataDes);
-    // updatePrayersTime(PrayersData.getDefPrayers());
   }
 
   void updatePrayersTime(dynamic prayerData) {
@@ -36,6 +33,8 @@ class _PrayTimeState extends State<PrayTime> {
         return;
       } //here we should use shared prefrences to load last prayrs' time like this => sharednextPrayerName = nextPrayerName = ['data][timing]
 
+      // fajrPrayer =
+      //     DateFormat("hh:mm").parse(prayerData['data']['timings']['Fajr']);
       fajrPrayer = prayerData['data']['timings']['Fajr'];
       sunriseTime = prayerData['data']['timings']['Sunrise'];
       dhohrPrayer = prayerData['data']['timings']['Dhuhr'];
@@ -52,10 +51,14 @@ class _PrayTimeState extends State<PrayTime> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       color: Colors.grey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          const SizedBox(
+            height: 10,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -70,13 +73,16 @@ class _PrayTimeState extends State<PrayTime> {
               )
             ],
           ),
+          const SizedBox(
+            height: 10,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Column(
                 children: [
                   Text('fajr'.i18n()),
-                  Text(fajrPrayer),
+                  Text(fajrPrayer.toString()),
                 ],
               ),
               Column(
@@ -110,6 +116,9 @@ class _PrayTimeState extends State<PrayTime> {
                 ],
               ),
             ],
+          ),
+          const SizedBox(
+            height: 10,
           ),
           TextButton(
             onPressed: () {},

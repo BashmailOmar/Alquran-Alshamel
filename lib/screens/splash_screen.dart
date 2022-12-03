@@ -1,12 +1,14 @@
 import 'dart:async';
 import 'package:alquran_alshamel/constants.dart';
 import 'package:alquran_alshamel/screens/home_screen.dart';
-import 'package:alquran_alshamel/services/prayers_data.dart';
+import 'package:alquran_alshamel/services/location.dart';
 import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String id = 'splash_screen';
+
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -16,18 +18,19 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    getPrayersData();
-  }
-
-  void getPrayersData() async {
-    var prayersDataHS = await PrayersData().getDefPrayers();
+    getCurrentLocation();
     Timer(
-        Duration(milliseconds: 1800),
-        () => Navigator.pushReplacement(
+        const Duration(milliseconds: 1800),
+            () => Navigator.pushReplacement(
             context,
             MaterialPageRoute(
                 builder: (context) =>
-                    HomeScreen(prayersDataDes: prayersDataHS))));
+                const HomeScreen())));
+  }
+
+  void getCurrentLocation() async {
+    var data = await getLocation();
+    print(data);
   }
 
   @override
