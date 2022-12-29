@@ -1,3 +1,5 @@
+import 'package:alquran_alshamel/screens/home_screen.dart';
+import 'package:alquran_alshamel/screens/select_city_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
 
@@ -11,8 +13,9 @@ class PrayTime extends StatefulWidget {
 }
 
 class _PrayTimeState extends State<PrayTime> {
-  var nextPrayerName = "Asr";
-  var cityName = "Makkah";
+  String? nextPrayerName = "default_next_prayer_name";
+  String? cityName = "default_city_name";
+
   var nextPraerTime = "00:00";
   var fajrPrayer = "00:00";
   var sunriseTime = "00:00";
@@ -20,16 +23,15 @@ class _PrayTimeState extends State<PrayTime> {
   var asrPrayer = "00:00";
   var maghrebPrayer = "00:00";
   var ishaPrayer = "00:00";
-  var isLoaded = false;
 
   @override
-  void initState() {
+  initState() {
     super.initState();
     updatePrayersTime(widget.prayersDataDes);
   }
 
   //When we add "async" here it works, but there are more than 400 errors :")
-  updatePrayersTime(dynamic prayerData) async {
+  updatePrayersTime(dynamic prayerData){
     if (prayerData == null) {
       return;
     }
@@ -39,10 +41,9 @@ class _PrayTimeState extends State<PrayTime> {
     asrPrayer = prayerData['data']['timings']['Asr'];
     maghrebPrayer = prayerData['data']['timings']['Maghrib'];
     ishaPrayer = prayerData['data']['timings']['Isha'];
-    nextPrayerName = "Asr";
-    cityName = prayerData['data']['meta']['Isha'];
-    nextPraerTime = "00:00";
-    isLoaded = true;
+    // nextPrayerName = "Asr";
+    // cityName = prayerData['data']['meta']['Fajr'];
+    // nextPraerTime = "00:00";
   }
 
   @override
@@ -50,13 +51,20 @@ class _PrayTimeState extends State<PrayTime> {
     return Container(
       color: Colors.grey,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
+          const SizedBox(
+            height: 10,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('next_prayer'
-                  .i18n([nextPrayerName.toString().i18n(), 'Makkah'])),
+              Text(
+                'next_prayer'.i18n([
+                  "default_next_prayer_name".i18n(),
+                  'default_city_name'.i18n()
+                ]),
+              ),
               const SizedBox(
                 width: 15,
               ),
@@ -65,6 +73,9 @@ class _PrayTimeState extends State<PrayTime> {
                 style: TextStyle(color: Colors.amber),
               )
             ],
+          ),
+          const SizedBox(
+            height: 5,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -107,8 +118,17 @@ class _PrayTimeState extends State<PrayTime> {
               ),
             ],
           ),
+          const SizedBox(
+            height: 5,
+          ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => SelectCityName(),
+                ),
+              );
+            },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
