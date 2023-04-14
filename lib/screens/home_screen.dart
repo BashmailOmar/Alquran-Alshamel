@@ -1,4 +1,5 @@
 import 'package:alquran_alshamel/components/custom_card.dart';
+import 'package:alquran_alshamel/components/prayers_time.dart';
 import 'package:alquran_alshamel/constants.dart';
 import 'package:alquran_alshamel/screens/quran_screen.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:localization/localization.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'home_screen';
+
   const HomeScreen({Key? key, this.prayersDataDes}) : super(key: key);
   final dynamic prayersDataDes;
 
@@ -29,7 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         body: Column(
           children: [
-            // PrayTime(prayersDataDes: widget.prayersDataDes),//The problem is here :)!, after long time to solve it :"(
+            PrayTime(),
+            //The problem is here :)!, after long time to solve it :"(
             const SizedBox(
               height: dividerHeight,
             ),

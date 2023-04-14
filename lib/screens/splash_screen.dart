@@ -4,10 +4,10 @@ import 'package:alquran_alshamel/screens/home_screen.dart';
 import 'package:alquran_alshamel/services/location.dart';
 import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String id = 'splash_screen';
-
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
@@ -15,19 +15,27 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
   @override
   void initState() {
     super.initState();
+    sharedPref();
     getCurrentLocation();
     Timer(
-        const Duration(milliseconds: 1800),
-            () => Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                const HomeScreen())));
+        const Duration(milliseconds: 3000),
+        () => Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const HomeScreen())));
   }
 
+  void sharedPref() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (prefs.getString("cityName") == null) {
+      prefs.setString("cityName", "Makkah");
+    }
+  }
+  void getPryersData(){
+
+  }
   void getCurrentLocation() async {
     var data = await getLocation();
     print(data);

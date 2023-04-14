@@ -19,6 +19,7 @@ dependencies:
   cities: ^1.0.0
   adhan: ^1.1.16
   location: ^4.4.0
+  shared_preferences: ^2.1.0
   
 dev_dependencies:
   flutter_test:

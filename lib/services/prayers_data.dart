@@ -1,29 +1,18 @@
 import 'package:alquran_alshamel/services/networking.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PrayersData {
+  String cityName = "";
+
+  void sharedPref() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    cityName = (prefs.getString("cityName")).toString();
+  }
+
   Future<dynamic> getCityPrayers(cityName) async {
-    cityName ?? "Makkah";
     NetworkHelper networkHelper = NetworkHelper(
         "http://api.aladhan.com/v1/timingsByCity?city=$cityName&country=%&method=4");
     var prayersData = await networkHelper.getData();
     return prayersData;
   }
-
-  Future<dynamic> getDefPrayers() async {
-    NetworkHelper networkHelper = NetworkHelper(
-        "http://api.aladhan.com/v1/timingsByCity?city=Makkah&country=%&method=4");
-    Map prayersData = await networkHelper.getData();
-    return prayersData;
-  }
-
-  // Future<dynamic> getLocationWeather() async {
-  //   Location location = Location();
-  //   await location.getCurrentLocation();
-
-  //   NetworkHelper networkHelper = NetworkHelper(
-  //       '$openWeatherMapUrl?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey&units=metric');
-
-  //   var weatherData = await networkHelper.getData();
-  //   return weatherData;
-  // }
 }

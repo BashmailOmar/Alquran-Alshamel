@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
 
 class PrayTime extends StatefulWidget {
-  const PrayTime({Key? key, this.prayersDataDes}) : super(key: key);
-  final dynamic prayersDataDes;
+  const PrayTime({Key? key}) : super(key: key);
 
   @override
   State<PrayTime> createState() => _PrayTimeState();
@@ -24,29 +23,34 @@ class _PrayTimeState extends State<PrayTime> {
   @override
   void initState() {
     super.initState();
-    updatePrayersTime(widget.prayersDataDes);
+    // updatePrayersTime();
   }
 
-  void updatePrayersTime(dynamic prayerData) {
-    setState(() {
-      if (prayerData == null) {
-        return;
-      } //here we should use shared prefrences to load last prayrs' time like this => sharednextPrayerName = nextPrayerName = ['data][timing]
+  Future<dynamic> getPrayersData(){
 
-      // fajrPrayer =
-      //     DateFormat("hh:mm").parse(prayerData['data']['timings']['Fajr']);
-      fajrPrayer = prayerData['data']['timings']['Fajr'];
-      sunriseTime = prayerData['data']['timings']['Sunrise'];
-      dhohrPrayer = prayerData['data']['timings']['Dhuhr'];
-      asrPrayer = prayerData['data']['timings']['Asr'];
-      maghrebPrayer = prayerData['data']['timings']['Maghrib'];
-      ishaPrayer = prayerData['data']['timings']['Isha'];
-      nextPrayerName = "Asr";
-      cityName = prayerData['data']['meta']['Isha'];
-      nextPraerTime = "00:00";
-      isLoaded = true;
-    });
+
+    return getPrayersData();
   }
+  // void updatePrayersTime() {
+  //   setState(() {
+  //     if (prayerData == null) {
+  //       return;
+  //     } //here we should use shared prefrences to load last prayrs' time like this => sharednextPrayerName = nextPrayerName = ['data][timing]
+  //
+  //     // fajrPrayer =
+  //     //     DateFormat("hh:mm").parse(prayerData['data']['timings']['Fajr']);
+  //     fajrPrayer = prayerData['data']['timings']['Fajr'];
+  //     sunriseTime = prayerData['data']['timings']['Sunrise'];
+  //     dhohrPrayer = prayerData['data']['timings']['Dhuhr'];
+  //     asrPrayer = prayerData['data']['timings']['Asr'];
+  //     maghrebPrayer = prayerData['data']['timings']['Maghrib'];
+  //     ishaPrayer = prayerData['data']['timings']['Isha'];
+  //     nextPrayerName = "Asr";
+  //     cityName = prayerData['data']['meta']['Isha'];
+  //     nextPraerTime = "00:00";
+  //     isLoaded = true;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
