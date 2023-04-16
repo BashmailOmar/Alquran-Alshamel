@@ -9,8 +9,9 @@ class PrayTime extends StatefulWidget {
 }
 
 class _PrayTimeState extends State<PrayTime> {
-  var nextPrayerName = "Asr";
-  var cityName = "Makkah";
+  String? nextPrayerName = "default_next_prayer_name";
+  String? cityName = "default_city_name";
+
   var nextPraerTime = "00:00";
   var fajrPrayer = "00:00";
   var sunriseTime = "00:00";
@@ -18,10 +19,9 @@ class _PrayTimeState extends State<PrayTime> {
   var asrPrayer = "00:00";
   var maghrebPrayer = "00:00";
   var ishaPrayer = "00:00";
-  var isLoaded = false;
 
   @override
-  void initState() {
+  initState() {
     super.initState();
     // updatePrayersTime();
   }
@@ -58,7 +58,7 @@ class _PrayTimeState extends State<PrayTime> {
       width: double.infinity,
       color: Colors.grey,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           const SizedBox(
             height: 10,
@@ -66,8 +66,12 @@ class _PrayTimeState extends State<PrayTime> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('next_prayer'
-                  .i18n([nextPrayerName.toString().i18n(), 'Makkah'])),
+              Text(
+                'next_prayer'.i18n([
+                  "default_next_prayer_name".i18n(),
+                  'default_city_name'.i18n()
+                ]),
+              ),
               const SizedBox(
                 width: 15,
               ),
@@ -123,9 +127,16 @@ class _PrayTimeState extends State<PrayTime> {
           ),
           const SizedBox(
             height: 10,
+
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => SelectCityName(),
+                ),
+              );
+            },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
