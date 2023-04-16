@@ -1,9 +1,6 @@
-import 'package:alquran_alshamel/components/custom_list_tile.dart';
 import 'package:alquran_alshamel/components/custom_sowar_list_tile.dart';
 import 'package:alquran_alshamel/constants.dart';
-import 'package:alquran_alshamel/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class QuranScreen extends StatefulWidget {
   static const String id = 'quran_screen';
@@ -25,86 +22,66 @@ class _QuranScreenState extends State<QuranScreen> {
         ),
         body: Center(
           child: ListView(
-            children: [
+            children: const [
               CustomSowarListTile(
                 cardText: 'سورة الفاتحة',
-                cardIcon: FontAwesomeIcons.caretLeft,
               ),
               CustomSowarListTile(
                 cardText: 'سورة البقرة',
-                cardIcon: FontAwesomeIcons.caretLeft,
               ),
               CustomSowarListTile(
                 cardText: 'سورة آل عمران',
-                cardIcon: FontAwesomeIcons.caretLeft,
               ),
               CustomSowarListTile(
                 cardText: 'سورة الفاتحة',
-                cardIcon: FontAwesomeIcons.caretLeft,
               ),
               CustomSowarListTile(
                 cardText: 'سورة الفاتحة',
-                cardIcon: FontAwesomeIcons.caretLeft,
               ),
               CustomSowarListTile(
                 cardText: 'سورة الفاتحة',
-                cardIcon: FontAwesomeIcons.caretLeft,
               ),
               CustomSowarListTile(
                 cardText: 'سورة الفاتحة',
-                cardIcon: FontAwesomeIcons.caretLeft,
               ),
               CustomSowarListTile(
                 cardText: 'سورة الفاتحة',
-                cardIcon: FontAwesomeIcons.caretLeft,
               ),
               CustomSowarListTile(
                 cardText: 'سورة الفاتحة',
-                cardIcon: FontAwesomeIcons.caretLeft,
               ),
               CustomSowarListTile(
                 cardText: 'سورة الفاتحة',
-                cardIcon: FontAwesomeIcons.caretLeft,
               ),
               CustomSowarListTile(
                 cardText: 'سورة الفاتحة',
-                cardIcon: FontAwesomeIcons.caretLeft,
               ),
               CustomSowarListTile(
                 cardText: 'سورة الفاتحة',
-                cardIcon: FontAwesomeIcons.caretLeft,
               ),
               CustomSowarListTile(
                 cardText: 'سورة الفاتحة',
-                cardIcon: FontAwesomeIcons.caretLeft,
               ),
               CustomSowarListTile(
                 cardText: 'سورة الفاتحة',
-                cardIcon: FontAwesomeIcons.caretLeft,
               ),
               CustomSowarListTile(
                 cardText: 'سورة الفاتحة',
-                cardIcon: FontAwesomeIcons.caretLeft,
               ),
               CustomSowarListTile(
                 cardText: 'سورة الفاتحة',
-                cardIcon: FontAwesomeIcons.caretLeft,
               ),
               CustomSowarListTile(
                 cardText: 'سورة الفاتحة',
-                cardIcon: FontAwesomeIcons.caretLeft,
               ),
               CustomSowarListTile(
                 cardText: 'سورة الفاتحة',
-                cardIcon: FontAwesomeIcons.caretLeft,
               ),
               CustomSowarListTile(
                 cardText: 'سورة الفاتحة',
-                cardIcon: FontAwesomeIcons.caretLeft,
               ),
               CustomSowarListTile(
                 cardText: 'سورة الفاتحة',
-                cardIcon: FontAwesomeIcons.caretLeft,
               ),
             ],
           ),

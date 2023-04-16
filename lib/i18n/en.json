@@ -12,5 +12,10 @@
     "athkar": "Al Athkar",
     "qiblah_location": "Qiblah location",
     "next_prayer": "%s prayer in %s after:",
-    "created_by": "Made in Makkah"
+    "created_by": "Made in Makkah",
+    "select_city": "Select city",
+    "makkah": "Makkah",
+    "jeddah": "Jeddah",
+    "taif": "Taif",
+    "riyadh": "Riyadh"
 }

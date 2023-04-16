@@ -1,4 +1,4 @@
-import 'package:alquran_alshamel/components/custom_card.dart';
+import 'package:alquran_alshamel/components/custom_button.dart';
 import 'package:alquran_alshamel/components/prayers_time.dart';
 import 'package:alquran_alshamel/constants.dart';
 import 'package:alquran_alshamel/screens/quran_screen.dart';
@@ -21,59 +21,63 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color(primaryBrown),
-          title: Center(
-            child: Text('home'.i18n(), style: kPageTitleText),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: const Color(primaryBrown),
+            title: Center(
+              child: Text('home'.i18n(), style: kPageTitleText),
+            ),
           ),
-        ),
-        body: Column(
-          children: [
-            PrayTime(),
-            //The problem is here :)!, after long time to solve it :"(
-            const SizedBox(
-              height: dividerHeight,
-            ),
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CustomButton(
-                      cardIcon: FontAwesomeIcons.bookQuran,
-                      cardText: 'quran'.i18n(),
-                      topLeft: 25,
-                      topRight: 25,
-                      bottomLeft: 10,
-                      bottomRight: 10,
-                      navigatTo: QuranScreen()),
-                  const SizedBox(
-                    height: dividerHeight,
-                  ),
-                  CustomButton(
-                      cardIcon: FontAwesomeIcons.prayingHands,
-                      cardText: 'athkar'.i18n(),
-                      topLeft: 10,
-                      topRight: 10,
-                      bottomLeft: 10,
-                      bottomRight: 10,
-                      navigatTo: QuranScreen()),
-                  const Divider(
-                    height: dividerHeight,
-                  ),
-                  CustomButton(
-                      cardIcon: FontAwesomeIcons.kaaba,
-                      cardText: 'qiblah_location'.i18n(),
-                      topLeft: 10,
-                      topRight: 10,
-                      bottomLeft: 25,
-                      bottomRight: 25,
-                      navigatTo: QuranScreen()),
-                ],
+          body: Column(
+            children: [
+              PrayTime(),
+              //The problem is here :)!, after long time to solve it :"(
+              const SizedBox(
+                height: dividerHeight,
               ),
-            ),
-          ],
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomButton(
+                        cardIcon: FontAwesomeIcons.bookQuran,
+                        cardText: 'quran'.i18n(),
+                        topLeft: 25,
+                        topRight: 25,
+                        bottomLeft: 10,
+                        bottomRight: 10,
+                        navigatTo: QuranScreen()),
+                    const SizedBox(
+                      height: dividerHeight,
+                    ),
+                    CustomButton(
+                        cardIcon: FontAwesomeIcons.prayingHands,
+                        cardText: 'athkar'.i18n(),
+                        topLeft: 10,
+                        topRight: 10,
+                        bottomLeft: 10,
+                        bottomRight: 10,
+                        navigatTo: QuranScreen()),
+                    const Divider(
+                      height: dividerHeight,
+                    ),
+                    CustomButton(
+                        cardIcon: FontAwesomeIcons.kaaba,
+                        cardText: 'qiblah_location'.i18n(),
+                        topLeft: 10,
+                        topRight: 10,
+                        bottomLeft: 25,
+                        bottomRight: 25,
+                        navigatTo: QuranScreen()),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

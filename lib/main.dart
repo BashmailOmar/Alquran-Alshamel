@@ -1,6 +1,7 @@
 import 'package:alquran_alshamel/constants.dart';
 import 'package:alquran_alshamel/screens/home_screen.dart';
 import 'package:alquran_alshamel/screens/quran_screen.dart';
+import 'package:alquran_alshamel/screens/select_city_screen.dart';
 import 'package:alquran_alshamel/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -53,6 +54,7 @@ class AlquranAlshamel extends StatelessWidget {
         SplashScreen.id: (context) => SplashScreen(),
         HomeScreen.id: (context) => HomeScreen(),
         QuranScreen.id: (context) => QuranScreen(),
+        SelectCityScreen.id: (context) => SelectCityScreen(),
       },
     );
   }

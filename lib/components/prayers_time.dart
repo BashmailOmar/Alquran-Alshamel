@@ -1,3 +1,5 @@
+import 'package:alquran_alshamel/constants.dart';
+import 'package:alquran_alshamel/screens/select_city_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
 
@@ -26,11 +28,10 @@ class _PrayTimeState extends State<PrayTime> {
     // updatePrayersTime();
   }
 
-  Future<dynamic> getPrayersData(){
-
-
+  Future<dynamic> getPrayersData() {
     return getPrayersData();
   }
+
   // void updatePrayersTime() {
   //   setState(() {
   //     if (prayerData == null) {
@@ -55,8 +56,14 @@ class _PrayTimeState extends State<PrayTime> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+        image: AssetImage('images/quran.jpg'),
+        fit: BoxFit.cover,
+        opacity: 100,
+      )),
       width: double.infinity,
-      color: Colors.grey,
+      // color: Colors.grey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -66,14 +73,17 @@ class _PrayTimeState extends State<PrayTime> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('next_prayer'
-                  .i18n([nextPrayerName.toString().i18n(), 'Makkah'])),
+              Text(
+                'next_prayer'
+                    .i18n([nextPrayerName.toString().i18n(), 'Makkah']),
+                style: kPryersBlocText,
+              ),
               const SizedBox(
                 width: 15,
               ),
               Text(
                 '3:21',
-                style: TextStyle(color: Colors.amber),
+                style: kPryersBlocText,
               )
             ],
           ),
@@ -85,38 +95,74 @@ class _PrayTimeState extends State<PrayTime> {
             children: [
               Column(
                 children: [
-                  Text('fajr'.i18n()),
-                  Text(fajrPrayer.toString()),
+                  Text(
+                    'fajr'.i18n(),
+                    style: kPryersBlocText,
+                  ),
+                  Text(
+                    fajrPrayer.toString(),
+                    style: kPryersBlocText,
+                  ),
                 ],
               ),
               Column(
                 children: [
-                  Text('sunrise'.i18n()),
-                  Text(sunriseTime),
+                  Text(
+                    'sunrise'.i18n(),
+                    style: kPryersBlocText,
+                  ),
+                  Text(
+                    sunriseTime,
+                    style: kPryersBlocText,
+                  ),
                 ],
               ),
               Column(
                 children: [
-                  Text('dhohr'.i18n()),
-                  Text(dhohrPrayer),
+                  Text(
+                    'dhohr'.i18n(),
+                    style: kPryersBlocText,
+                  ),
+                  Text(
+                    dhohrPrayer,
+                    style: kPryersBlocText,
+                  ),
                 ],
               ),
               Column(
                 children: [
-                  Text('asr'.i18n()),
-                  Text(asrPrayer),
+                  Text(
+                    'asr'.i18n(),
+                    style: kPryersBlocText,
+                  ),
+                  Text(
+                    asrPrayer,
+                    style: kPryersBlocText,
+                  ),
                 ],
               ),
               Column(
                 children: [
-                  Text('maghreb'.i18n()),
-                  Text(maghrebPrayer),
+                  Text(
+                    'maghreb'.i18n(),
+                    style: kPryersBlocText,
+                  ),
+                  Text(
+                    maghrebPrayer,
+                    style: kPryersBlocText,
+                  ),
                 ],
               ),
               Column(
                 children: [
-                  Text('isha'.i18n()),
-                  Text(ishaPrayer),
+                  Text(
+                    'isha'.i18n(),
+                    style: kPryersBlocText,
+                  ),
+                  Text(
+                    ishaPrayer,
+                    style: kPryersBlocText,
+                  ),
                 ],
               ),
             ],
@@ -125,12 +171,24 @@ class _PrayTimeState extends State<PrayTime> {
             height: 10,
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const SelectCityScreen(),
+                ),
+              );
+            },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('change_city'.i18n()),
-                const Icon(Icons.arrow_right)
+                Text(
+                  'change_city'.i18n(),
+                  style: kPryersBlocText,
+                ),
+                const Icon(
+                  Icons.arrow_right,
+                  color: Color(primaryBrown),
+                )
               ],
             ),
           )

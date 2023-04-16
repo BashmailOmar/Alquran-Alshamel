@@ -12,5 +12,10 @@
     "athkar": "الأذكار",
     "qiblah_location": "إتجاه القبلة",
     "next_prayer":"صلاة %s في %s بعد:",
-    "created_by": "صنع في مكة"
+    "created_by": "صنع في مكة",
+    "select_city": "إختر المدينة",
+    "makkah": "مكة",
+    "jeddah": "جدة",
+    "taif": "الطائف",
+    "riyadh": "الرياض"
 }
