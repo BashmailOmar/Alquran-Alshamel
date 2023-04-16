@@ -1,12 +1,8 @@
-import 'package:alquran_alshamel/screens/home_screen.dart';
-import 'package:alquran_alshamel/screens/select_city_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
 
 class PrayTime extends StatefulWidget {
-  PrayTime({this.prayersDataDes});
-
-  final prayersDataDes;
+  const PrayTime({Key? key}) : super(key: key);
 
   @override
   State<PrayTime> createState() => _PrayTimeState();
@@ -27,28 +23,39 @@ class _PrayTimeState extends State<PrayTime> {
   @override
   initState() {
     super.initState();
-    updatePrayersTime(widget.prayersDataDes);
+    // updatePrayersTime();
   }
 
-  //When we add "async" here it works, but there are more than 400 errors :")
-  updatePrayersTime(dynamic prayerData){
-    if (prayerData == null) {
-      return;
-    }
-    fajrPrayer = prayerData['data']['timings']['Fajr'];
-    sunriseTime = prayerData['data']['timings']['Sunrise'];
-    dhohrPrayer = prayerData['data']['timings']['Dhuhr'];
-    asrPrayer = prayerData['data']['timings']['Asr'];
-    maghrebPrayer = prayerData['data']['timings']['Maghrib'];
-    ishaPrayer = prayerData['data']['timings']['Isha'];
-    // nextPrayerName = "Asr";
-    // cityName = prayerData['data']['meta']['Fajr'];
-    // nextPraerTime = "00:00";
+  Future<dynamic> getPrayersData(){
+
+
+    return getPrayersData();
   }
+  // void updatePrayersTime() {
+  //   setState(() {
+  //     if (prayerData == null) {
+  //       return;
+  //     } //here we should use shared prefrences to load last prayrs' time like this => sharednextPrayerName = nextPrayerName = ['data][timing]
+  //
+  //     // fajrPrayer =
+  //     //     DateFormat("hh:mm").parse(prayerData['data']['timings']['Fajr']);
+  //     fajrPrayer = prayerData['data']['timings']['Fajr'];
+  //     sunriseTime = prayerData['data']['timings']['Sunrise'];
+  //     dhohrPrayer = prayerData['data']['timings']['Dhuhr'];
+  //     asrPrayer = prayerData['data']['timings']['Asr'];
+  //     maghrebPrayer = prayerData['data']['timings']['Maghrib'];
+  //     ishaPrayer = prayerData['data']['timings']['Isha'];
+  //     nextPrayerName = "Asr";
+  //     cityName = prayerData['data']['meta']['Isha'];
+  //     nextPraerTime = "00:00";
+  //     isLoaded = true;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       color: Colors.grey,
       child: Column(
         // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -75,7 +82,7 @@ class _PrayTimeState extends State<PrayTime> {
             ],
           ),
           const SizedBox(
-            height: 5,
+            height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -83,7 +90,7 @@ class _PrayTimeState extends State<PrayTime> {
               Column(
                 children: [
                   Text('fajr'.i18n()),
-                  Text(fajrPrayer),
+                  Text(fajrPrayer.toString()),
                 ],
               ),
               Column(
@@ -119,7 +126,8 @@ class _PrayTimeState extends State<PrayTime> {
             ],
           ),
           const SizedBox(
-            height: 5,
+            height: 10,
+
           ),
           TextButton(
             onPressed: () {

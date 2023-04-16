@@ -11,7 +11,6 @@ class NetworkHelper {
     final Map data;
     if (response.statusCode == 200) {
       data = json.decode(response.body);
-      // print(data);
       return data;
     } else {
       print("Error");

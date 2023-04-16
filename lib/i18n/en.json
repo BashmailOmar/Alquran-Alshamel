@@ -12,7 +12,5 @@
     "athkar": "Al Athkar",
     "qiblah_location": "Qiblah location",
     "next_prayer": "%s prayer in %s after:",
-    "created_by": "Created in Makkah",
-    "default_city_name": "Makkah",
-    "default_next_prayer_name": "Fajr"
+    "created_by": "Made in Makkah"
 }

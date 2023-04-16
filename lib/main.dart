@@ -9,11 +9,13 @@ import 'package:localization/localization.dart';
 
 void main() {
   runApp(
-    AlquranAlshamel(),
+    const AlquranAlshamel(),
   );
 }
 
 class AlquranAlshamel extends StatelessWidget {
+  const AlquranAlshamel({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     LocalJsonLocalization.delegate.directories = ['lib/i18n'];
