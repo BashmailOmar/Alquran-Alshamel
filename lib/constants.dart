@@ -20,14 +20,21 @@ const kSplashSubText = TextStyle(
 );
 
 const kCardText = TextStyle(
-    color: Color(primaryBrown),
-    fontSize: 22,
-    fontFamily: 'Vazirmatn',
-    fontWeight: FontWeight.bold);
+  color: Color(primaryBrown),
+  fontSize: 22,
+  fontFamily: 'Vazirmatn',
+  fontWeight: FontWeight.bold,
+);
 
 const kPageTitleText = TextStyle(
   color: Color(primaryGold),
   fontSize: 20,
   fontWeight: FontWeight.bold,
   fontFamily: 'Vazirmatn',
+);
+
+const kPryersBlocText = TextStyle(
+  color: Color(primaryGold),
+  fontFamily: 'Vazirmatn',
+  fontWeight: FontWeight.bold,
 );

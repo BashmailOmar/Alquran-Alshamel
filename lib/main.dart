@@ -54,7 +54,7 @@ class AlquranAlshamel extends StatelessWidget {
         SplashScreen.id: (context) => SplashScreen(),
         HomeScreen.id: (context) => HomeScreen(),
         QuranScreen.id: (context) => QuranScreen(),
-        SelectCityName.id:(context) => SelectCityName()
+        SelectCityScreen.id: (context) => SelectCityScreen(),
       },
     );
   }

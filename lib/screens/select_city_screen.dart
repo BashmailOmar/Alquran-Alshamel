@@ -1,54 +1,78 @@
-// import 'package:alquran_alshamel/services/cities_name.dart';
-// import 'package:flutter/material.dart';
-//
-//
-// /*
-//  * Hello everyone here I will stop developing this fuc*ing application because it is hard to develop it without backend skills :)
-//  */
-//
-// class SelectCityName extends StatefulWidget {
-//   static const String id = 'select_city_screen';
-//
-//   const SelectCityName({Key? key}) : super(key: key);
-//
-//   @override
-//   State<SelectCityName> createState() => _SelectCityNameState();
-// }
-//
-// class _SelectCityNameState extends State<SelectCityName> {
-//   late Future<List> citiesList;
-//
-//   @override
-//   void initState() {
-//     // TODO: implement initState
-//     super.initState();
-//     getData();
-//   }
-//
-//   getData(){
-//     // citiesList = getCitiesName();
-//     print(getCitiesName());
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Container(
-//         // child: ListView.builder(
-//         //   // Let the ListView know how many items it needs to build.
-//         //   itemCount: citiesList.length,
-//         //   // Provide a builder function. This is where the magic happens.
-//         //   // Convert each item into a widget based on the type of item it is.
-//         //   itemBuilder: (context, index) {
-//         //     final city = citiesList[index];
-//         //
-//         //     return ListTile(
-//         //       title: city.buildTitle(context),
-//         //       subtitle: city.buildSubtitle(context),
-//         //     );
-//         //   },
-//         // ),
-//       ),
-//     );
-//   }
-// }
+import 'package:alquran_alshamel/components/search_button.dart';
+import 'package:alquran_alshamel/components/select_city_card.dart';
+import 'package:alquran_alshamel/constants.dart';
+import 'package:flutter/material.dart';
+import 'package:localization/localization.dart';
+
+class SelectCityScreen extends StatefulWidget {
+  static const String id = 'select_city_screen';
+
+  const SelectCityScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SelectCityScreen> createState() => _SelectCityScreenState();
+}
+
+class _SelectCityScreenState extends State<SelectCityScreen> {
+  List cities = [
+    'makkah'.i18n(),
+    'jeddah'.i18n(),
+    'taif'.i18n(),
+    'riyadh'.i18n(),
+  ];
+  String? _userCityInput = "";
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: const Color(primaryBrown),
+          title: Center(
+            child: Text('select_city'.i18n(), style: kPageTitleText),
+          ),
+        ),
+        body: Column(
+          children: [
+            SelectCityCard(
+              cityName: cities[0],
+            ),
+            SelectCityCard(
+              cityName: cities[1],
+            ),
+            SelectCityCard(
+              cityName: cities[2],
+            ),
+            SelectCityCard(
+              cityName: cities[3],
+            ),
+            const SizedBox(
+              height: 40,
+              width: 40,
+            ),
+
+            //it not take the value from here and put it in the input of SearchButton
+            TextField(
+              decoration: InputDecoration(
+                hintText: "write_city_in_english".i18n(),
+                border: const OutlineInputBorder(),
+              ),
+              onChanged: (value) {
+                setState(() {
+                  _userCityInput = value;
+                });
+              },
+            ),
+
+            //also here try to take the value from field
+            // try to print it so you can know if it appear or not
+            SearchButton(
+              cardText: "search".i18n(),
+              cityName: _userCityInput.toString(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

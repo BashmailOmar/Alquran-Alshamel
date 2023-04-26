@@ -38,8 +38,8 @@ class _CustomListTileState extends State<CustomListTile> {
         //     ),
         //   );
       },
-      child: Container(
-        width: 350,
+      child: SizedBox(
+        width: double.infinity,
         child: ListTile(
           shape: customShape(),
           tileColor: const Color(primaryGold),
