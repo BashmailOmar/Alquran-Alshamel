@@ -38,7 +38,7 @@ class _CustomListTileState extends State<CustomListTile> {
         //     ),
         //   );
       },
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
         child: ListTile(
           shape: customShape(),

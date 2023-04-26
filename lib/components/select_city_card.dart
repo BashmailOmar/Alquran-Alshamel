@@ -19,7 +19,7 @@ class _SelectCityCardState extends State<SelectCityCard> {
     switch (widget.cityName) {
       case "مكة":
         {
-          prefs.setString("cityName", "Makkah");
+          prefs.setString("cityName", "Mecca");
         }
         break;
       case "جدة":

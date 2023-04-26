@@ -1,13 +1,19 @@
 import 'dart:async';
 import 'package:alquran_alshamel/constants.dart';
 import 'package:alquran_alshamel/screens/home_screen.dart';
-import 'package:alquran_alshamel/services/location.dart';
+import 'package:alquran_alshamel/services/prayers_data.dart';
 import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String id = 'splash_screen';
+  static var fajrPrayer;
+  static var sunriseTime;
+  static var dhuhrPrayer;
+  static var asrPrayer;
+  static var maghrebPrayer;
+  static var ishaPrayer;
 
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -20,6 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     sharedPref();
+    setTimingPrayers();
     //I will comment this because we do not need it yet!
     // getCurrentLocation();
 
@@ -37,14 +44,69 @@ class _SplashScreenState extends State<SplashScreen> {
   */
   void sharedPref() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    print(prefs.getString("cityName"));
     if (prefs.getString("cityName") == null) {
-      prefs.setString("cityName", "Makkah");
+      prefs.setString("cityName", "Mecca");
     }
   }
 
-  //here we supposed to get the prayers data
-  void getPryersData() {}
+  void setTimingPrayers() {
+    PrayersData().getCityPrayers().then((value) {
+      TimeOfDay _time = TimeOfDay.now();
+      var fajrPrayer = value['data']['timings']['Fajr'];
+      print(fajrPrayer.toString().substring(0,2));
+      print(_time.format(context).toString().substring(0,1));//here if the number only one digit it will take : so we have to put condition
+      var sunriseTime = value['data']['timings']['Sunrise'];
+      var dhuhrPrayer = value['data']['timings']['Dhuhr'];
+      var asrPrayer = value['data']['timings']['Asr'];
+      var maghrebPrayer = value['data']['timings']['Maghrib'];
+      var ishaPrayer = value['data']['timings']['Isha'];
+
+      // if(0>fajrPrayer.toString().substring(0,2)){
+      //
+      // }else if
+      // if(int.parse(_time.format(context).toString().substring(0,2)) > int.parse(fajrPrayer.format(context).toString().substring(0,2))){
+      //   print(_time.format(context).toString().substring(2));
+      // }
+      //Next here we will create two varibles to return next prayer time and name.
+      SplashScreen.fajrPrayer = TimeOfDay(
+              hour: int.parse(fajrPrayer.split(":")[0]),
+              minute: int.parse(fajrPrayer.split(":")[1]))
+          .format(context);
+
+      SplashScreen.sunriseTime = TimeOfDay(
+              hour:
+                  int.parse(sunriseTime.split(":")[0]),
+              minute:
+                  int.parse(sunriseTime.split(":")[1]))
+          .format(context);
+
+      SplashScreen.dhuhrPrayer = TimeOfDay(
+              hour: int.parse(dhuhrPrayer.split(":")[0]),
+              minute:
+                  int.parse(dhuhrPrayer.split(":")[1]))
+          .format(context);
+
+      SplashScreen.asrPrayer = TimeOfDay(
+              hour: int.parse(asrPrayer.split(":")[0]),
+              minute: int.parse(asrPrayer.split(":")[1]))
+          .format(context);
+
+      SplashScreen.maghrebPrayer = TimeOfDay(
+              hour:
+                  int.parse(maghrebPrayer.split(":")[0]),
+              minute:
+                  int.parse(maghrebPrayer.split(":")[1]))
+          .format(context);
+
+      SplashScreen.ishaPrayer = TimeOfDay(
+              hour: int.parse(ishaPrayer.split(":")[0]),
+              minute: int.parse(ishaPrayer.split(":")[1]))
+          .format(context);
+
+      
+      // if (cuure) print(SplashScreen.ishaPrayer.toString().substring(2));
+    });
+  }
 
   //I will coment this because we do not need it yet!
   // void getCurrentLocation() async {

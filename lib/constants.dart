@@ -34,7 +34,7 @@ const kPageTitleText = TextStyle(
 );
 
 const kPryersBlocText = TextStyle(
-  color: Color(primaryBrown),
+  color: Color(primaryGold),
   fontFamily: 'Vazirmatn',
   fontWeight: FontWeight.bold,
 );
