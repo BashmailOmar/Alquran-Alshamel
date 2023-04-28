@@ -19,7 +19,7 @@ class PrayTime extends StatefulWidget {
 
 class _PrayTimeState extends State<PrayTime> {
   var nextPrayerName = "asr";
-  var cityName = "makkah";
+  var cityName = "Mecca";
   var nextPraerTime = "00:00";
 
 
@@ -50,8 +50,8 @@ class _PrayTimeState extends State<PrayTime> {
               const SizedBox(
                 width: 15,
               ),
-              const Text(
-                '3:21',
+              Text(
+                nextPraerTime,
                 style: kPryersBlocText,
               )
             ],
