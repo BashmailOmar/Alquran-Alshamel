@@ -14,6 +14,8 @@ class SplashScreen extends StatefulWidget {
   static var asrPrayer;
   static var maghrebPrayer;
   static var ishaPrayer;
+  static var nextPrayerName;
+  static var nextPrayerTime;
 
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -49,23 +51,51 @@ class _SplashScreenState extends State<SplashScreen> {
     }
   }
 
-  //this method will delete ':' if it in the string
+  //this method will delete ':' if it is in the string
   int subStringDes(String str) {
     str = str.substring(0, 2);
     str = str.replaceAll(RegExp(':'), '');
     return int.parse(str);
   }
 
-  void calculateNextPrayerTime(var f, var d, var a, var m, var i) {
+  void calculateNextPrayerTime(
+      var f, var d, var a, var m, var i, var currentHour) {
     //here put the conditions to return the next prayer tim brro
+    var name;
+    var time;
+    if (f > currentHour) {
+      name = "fajr";
+      time = 5;
+      print(f);
+    } else if (d > currentHour) {
+      name = "dhohr";
+      time = 5;
+      print(d);
+    } else if (a > currentHour) {
+      name = "asr";
+      time = 5;
+      print(a);
+    } else if (m > currentHour) {
+      name = "maghreb";
+      time = 5;
+      print(m);
+    } else if (i > currentHour) {
+      name = "isha";
+      time = 5;
+      print(i);
+    } else {
+      name = "fajr";
+      time = 5;
+      print(f);
+    }
+    SplashScreen.nextPrayerName = name;
+    SplashScreen.nextPrayerTime = time;
   }
 
   void setTimingPrayers() {
     PrayersData().getCityPrayers().then((value) {
-      TimeOfDay _time = TimeOfDay.now();
+      TimeOfDay time = TimeOfDay.now();
       var fajrPrayer = value['data']['timings']['Fajr'];
-      print(subStringDes(fajrPrayer));
-      print(subStringDes(_time.format(context).toString()));
       // print(_time.format(context).toString().substring(0,
       //     2)); //here if the number only one digit it will take : so we have to put condition
       var sunriseTime = value['data']['timings']['Sunrise'];
@@ -73,6 +103,10 @@ class _SplashScreenState extends State<SplashScreen> {
       var asrPrayer = value['data']['timings']['Asr'];
       var maghrebPrayer = value['data']['timings']['Maghrib'];
       var ishaPrayer = value['data']['timings']['Isha'];
+
+      // print(int.parse(fajrPrayer.split(":")[0]));
+      // print(subStringDes(fajrPrayer.split(":")[1]));
+      // print(time.hour.toInt());
 
       // if(0>fajrPrayer.toString().substring(0,2)){
       //
@@ -110,6 +144,14 @@ class _SplashScreenState extends State<SplashScreen> {
               hour: int.parse(ishaPrayer.split(":")[0]),
               minute: int.parse(ishaPrayer.split(":")[1]))
           .format(context);
+
+      calculateNextPrayerTime(
+          int.parse(fajrPrayer.split(":")[0]),
+          int.parse(dhuhrPrayer.split(":")[0]),
+          int.parse(asrPrayer.split(":")[0]),
+          int.parse(maghrebPrayer.split(":")[0]),
+          int.parse(ishaPrayer.split(":")[0]),
+          time.hour.toInt());
 
       // if (cuure) print(SplashScreen.ishaPrayer.toString().substring(2));
     });
