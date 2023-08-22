@@ -5,23 +5,32 @@ import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
 
 class PrayTime extends StatefulWidget {
-  const PrayTime({Key? key, this.fajrPrayer, this.sunriseTime, this.dhohrPrayer, this.asrPrayer, this.maghrebPrayer, this.ishaPrayer}) : super(key: key);
+  const PrayTime(
+      {Key? key,
+      this.fajrPrayer,
+      this.sunriseTime,
+      this.dhohrPrayer,
+      this.asrPrayer,
+      this.maghrebPrayer,
+      this.ishaPrayer,
+      this.nextPrayerName,
+      this.nextPrayerTime})
+      : super(key: key);
   final fajrPrayer;
   final sunriseTime;
   final dhohrPrayer;
   final asrPrayer;
   final maghrebPrayer;
   final ishaPrayer;
+  final nextPrayerName;
+  final nextPrayerTime;
 
   @override
   State<PrayTime> createState() => _PrayTimeState();
 }
 
 class _PrayTimeState extends State<PrayTime> {
-  var nextPrayerName = "asr";
   var cityName = "Mecca";
-  var nextPraerTime = "00:00";
-
 
   @override
   Widget build(BuildContext context) {
@@ -44,14 +53,15 @@ class _PrayTimeState extends State<PrayTime> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'next_prayer'.i18n([nextPrayerName.i18n(), cityName.i18n()]),
+                'next_prayer'.i18n(
+                    [widget.nextPrayerName.toString().i18n(), cityName.i18n()]),
                 style: kPryersBlocText,
               ),
               const SizedBox(
                 width: 15,
               ),
               Text(
-                nextPraerTime,
+                widget.nextPrayerTime.toString(),
                 style: kPryersBlocText,
               )
             ],

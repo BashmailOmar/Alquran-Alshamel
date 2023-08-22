@@ -40,7 +40,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   dhohrPrayer: SplashScreen.dhuhrPrayer,
                   asrPrayer: SplashScreen.asrPrayer,
                   maghrebPrayer: SplashScreen.maghrebPrayer,
-                  ishaPrayer: SplashScreen.ishaPrayer),
+                  ishaPrayer: SplashScreen.ishaPrayer,
+                  nextPrayerName: SplashScreen.nextPrayerName,
+                  nextPrayerTime: SplashScreen.nextPrayerTime),
               //The problem is here :)!, after long time to solve it :"(
               const SizedBox(
                 height: dividerHeight,
