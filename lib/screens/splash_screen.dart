@@ -59,10 +59,20 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void calculateNextPrayerTime(
-      dynamic f, dynamic d, dynamic a, dynamic m, dynamic i, dynamic currentHour) {
+      dynamic f, dynamic d, dynamic a, dynamic m, dynamic i, dynamic currentTime) {
     //here put the conditions to return the next prayer tim brro
     dynamic name;
     dynamic time;
+    var currentHour = currentTime.hour.toInt();
+    var currentMin = currentTime.minute.toInt();
+    /*
+     ********
+     *******************************************************************************
+     Now I have hours and min. Now, I can calculate the time correctly, by using it.
+     *******************************************************************************
+     ********
+     */
+
     if (int.parse(f.split(":")[0]) > currentHour) {
       name = "fajr";
       time = SplashScreen.fajrPrayer;
@@ -145,7 +155,7 @@ class _SplashScreenState extends State<SplashScreen> {
           asrPrayer,
           maghrebPrayer,
           ishaPrayer,
-          time.hour.toInt());
+          time);
 
       // if (cuure) print(SplashScreen.ishaPrayer.toString().substring(2));
     });
