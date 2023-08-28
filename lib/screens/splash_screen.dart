@@ -8,14 +8,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String id = 'splash_screen';
-  static var fajrPrayer;
-  static var sunriseTime;
-  static var dhuhrPrayer;
-  static var asrPrayer;
-  static var maghrebPrayer;
-  static var ishaPrayer;
-  static var nextPrayerName;
-  static var nextPrayerTime;
+  static dynamic fajrPrayer;
+  static dynamic sunriseTime;
+  static dynamic dhuhrPrayer;
+  static dynamic asrPrayer;
+  static dynamic maghrebPrayer;
+  static dynamic ishaPrayer;
+  static dynamic nextPrayerName;
+  static dynamic nextPrayerTime;
 
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -59,34 +59,28 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void calculateNextPrayerTime(
-      var f, var d, var a, var m, var i, var currentHour) {
+      dynamic f, dynamic d, dynamic a, dynamic m, dynamic i, dynamic currentHour) {
     //here put the conditions to return the next prayer tim brro
-    var name;
-    var time;
-    if (f > currentHour) {
+    dynamic name;
+    dynamic time;
+    if (int.parse(f.split(":")[0]) > currentHour) {
       name = "fajr";
-      time = 5;
-      print(f);
-    } else if (d > currentHour) {
+      time = SplashScreen.fajrPrayer;
+    } else if (int.parse(d.split(":")[0]) > currentHour) {
       name = "dhohr";
-      time = 5;
-      print(d);
-    } else if (a > currentHour) {
+      time = SplashScreen.dhuhrPrayer;
+    } else if (int.parse(a.split(":")[0]) > currentHour) {
       name = "asr";
-      time = 5;
-      print(a);
-    } else if (m > currentHour) {
+      time = SplashScreen.asrPrayer;
+    } else if (int.parse(m.split(":")[0]) > currentHour) {
       name = "maghreb";
-      time = 5;
-      print(m);
-    } else if (i > currentHour) {
+      time = SplashScreen.maghrebPrayer;
+    } else if (int.parse(i.split(":")[0]) > currentHour) {
       name = "isha";
-      time = 5;
-      print(i);
+      time = SplashScreen.ishaPrayer;
     } else {
       name = "fajr";
-      time = 5;
-      print(f);
+      time = SplashScreen.fajrPrayer;
     }
     SplashScreen.nextPrayerName = name;
     SplashScreen.nextPrayerTime = time;
@@ -146,11 +140,11 @@ class _SplashScreenState extends State<SplashScreen> {
           .format(context);
 
       calculateNextPrayerTime(
-          int.parse(fajrPrayer.split(":")[0]),
-          int.parse(dhuhrPrayer.split(":")[0]),
-          int.parse(asrPrayer.split(":")[0]),
-          int.parse(maghrebPrayer.split(":")[0]),
-          int.parse(ishaPrayer.split(":")[0]),
+          fajrPrayer,
+          dhuhrPrayer,
+          asrPrayer,
+          maghrebPrayer,
+          ishaPrayer,
           time.hour.toInt());
 
       // if (cuure) print(SplashScreen.ishaPrayer.toString().substring(2));
