@@ -58,8 +58,8 @@ class _SplashScreenState extends State<SplashScreen> {
     return int.parse(str);
   }
 
-  void calculateNextPrayerTime(
-      dynamic f, dynamic d, dynamic a, dynamic m, dynamic i, dynamic currentTime) {
+  void calculateNextPrayerTime(dynamic f, dynamic d, dynamic a, dynamic m,
+      dynamic i, dynamic currentTime) {
     //here put the conditions to return the next prayer tim brro
     dynamic name;
     dynamic time;
@@ -73,24 +73,66 @@ class _SplashScreenState extends State<SplashScreen> {
      ********
      */
 
-    if (int.parse(f.split(":")[0]) > currentHour) {
-      name = "fajr";
-      time = SplashScreen.fajrPrayer;
-    } else if (int.parse(d.split(":")[0]) > currentHour) {
-      name = "dhohr";
-      time = SplashScreen.dhuhrPrayer;
-    } else if (int.parse(a.split(":")[0]) > currentHour) {
-      name = "asr";
-      time = SplashScreen.asrPrayer;
-    } else if (int.parse(m.split(":")[0]) > currentHour) {
-      name = "maghreb";
-      time = SplashScreen.maghrebPrayer;
-    } else if (int.parse(i.split(":")[0]) > currentHour) {
-      name = "isha";
-      time = SplashScreen.ishaPrayer;
-    } else {
-      name = "fajr";
-      time = SplashScreen.fajrPrayer;
+    if (int.parse(f.split(":")[0]) >= currentHour) {
+      if (int.parse(f.split(":")[0]) > currentHour) {
+        name = "fajr";
+        time = SplashScreen.fajrPrayer;
+      } else if (currentHour == f.split(":")[0] &&
+          currentMin < f.split(":")[1]) {
+        name = "fajr";
+        time = SplashScreen.fajrPrayer;
+      } else {
+        name = "dhohr";
+        time = SplashScreen.dhuhrPrayer;
+      }
+    } else if (int.parse(d.split(":")[0]) >= currentHour) {
+      if (int.parse(d.split(":")[0]) > currentHour) {
+        name = "dhohr";
+        time = SplashScreen.dhuhrPrayer;
+      } else if (currentHour == d.split(":")[0] &&
+          currentMin < d.split(":")[1]) {
+        name = "dhohr";
+        time = SplashScreen.dhuhrPrayer;
+      } else {
+        name = "asr";
+        time = SplashScreen.asrPrayer;
+      }
+    } else if (int.parse(a.split(":")[0]) >= currentHour) {
+      if (int.parse(a.split(":")[0]) > currentHour) {
+        name = "asr";
+        time = SplashScreen.asrPrayer;
+      } else if (currentHour == a.split(":")[0] &&
+          currentMin < a.split(":")[1]) {
+        name = "asr";
+        time = SplashScreen.asrPrayer;
+      } else {
+        name = "maghreb";
+        time = SplashScreen.maghrebPrayer;
+      }
+    } else if (int.parse(m.split(":")[0]) >= currentHour) {
+      if (int.parse(m.split(":")[0]) > currentHour) {
+        name = "maghreb";
+        time = SplashScreen.maghrebPrayer;
+      } else if (currentHour == m.split(":")[0] &&
+          currentMin < m.split(":")[1]) {
+        name = "maghreb";
+        time = SplashScreen.maghrebPrayer;
+      } else {
+        name = "isha";
+        time = SplashScreen.ishaPrayer;
+      }
+    } else if (int.parse(i.split(":")[0]) >= currentHour) {
+      if (int.parse(i.split(":")[0]) > currentHour) {
+        name = "isha";
+        time = SplashScreen.ishaPrayer;
+      } else if (currentHour == m.split(":")[0] &&
+          currentMin < m.split(":")[1]) {
+        name = "isha";
+        time = SplashScreen.ishaPrayer;
+      } else {
+        name = "fajr";
+        time = SplashScreen.fajrPrayer;
+      }
     }
     SplashScreen.nextPrayerName = name;
     SplashScreen.nextPrayerTime = time;
@@ -150,12 +192,7 @@ class _SplashScreenState extends State<SplashScreen> {
           .format(context);
 
       calculateNextPrayerTime(
-          fajrPrayer,
-          dhuhrPrayer,
-          asrPrayer,
-          maghrebPrayer,
-          ishaPrayer,
-          time);
+          fajrPrayer, dhuhrPrayer, asrPrayer, maghrebPrayer, ishaPrayer, time);
 
       // if (cuure) print(SplashScreen.ishaPrayer.toString().substring(2));
     });
